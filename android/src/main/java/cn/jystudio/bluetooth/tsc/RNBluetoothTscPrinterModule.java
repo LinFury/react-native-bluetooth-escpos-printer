@@ -43,6 +43,7 @@ implements BluetoothServiceStateObserver{
         ReadableArray barCodes = options.hasKey("barcode")? options.getArray("barcode"):null;
         ReadableArray images = options.hasKey("image")? options.getArray("image"):null;
         ReadableArray reverses = options.hasKey("reverse")? options.getArray("reverse"):null;
+        ReadableArray datamatrix = options.hasKey("datamatrix")? options.getArray("datamatrix"):null;
 
         TscCommand.DIRECTION direction = options.hasKey("direction") ?
                 TscCommand.DIRECTION.BACKWARD.getValue() == options.getInt("direction") ? TscCommand.DIRECTION.BACKWARD : TscCommand.DIRECTION.FORWARD
@@ -168,6 +169,11 @@ implements BluetoothServiceStateObserver{
                 int aHeight = area.getInt("height");
                 tsc.addReverse(ax,ay,aWidth,aHeight);
             }
+        }
+
+        // Add DataMatrixSupport
+        if(datamatrix != null){
+            tsc.AddDataMatrix();
         }
 
         tsc.addPrint(1, 1); // 打印标签

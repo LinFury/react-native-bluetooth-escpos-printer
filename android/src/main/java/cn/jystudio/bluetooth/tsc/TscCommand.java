@@ -332,6 +332,12 @@ public class TscCommand {
         addStrToCommand(str);
     }
 
+    public void AddDataMatrix() {
+        String str = new String();
+        str = "DMATRIX 310,110,400,400,x6, \"DMATRIX EXAMPLE 2\"";
+        addStrToCommand(str);
+    }
+
     public void addCodePage(CODEPAGE page) {
         String str = new String();
         str = "CODEPAGE " + page.getValue() + "\r\n";
