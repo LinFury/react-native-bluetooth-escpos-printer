@@ -173,7 +173,18 @@ implements BluetoothServiceStateObserver{
 
         // Add DataMatrixSupport
         if(datamatrix != null){
-            tsc.AddDataMatrix();
+            for (int i = 0; i < datamatrix.size(); i++) {
+                ReadableMap dm = datamatrix.getMap(i);
+                int x = dm.getInt("x");
+                int y = dm.getInt("y");
+                //int qrWidth = qr.getInt("width");
+                //TscCommand.EEC level = this.findEEC(qr.getString("level"));
+                //TscCommand.ROTATION rotation = this.findRotation(qr.getInt("rotation"));
+                //String code = qr.getString("code");
+                tsc.AddDataMatrix(x, y);
+               // tsc.addQRCode(x, y, level, qrWidth, rotation, code);
+            }
+
         }
 
         tsc.addPrint(1, 1); // 打印标签
